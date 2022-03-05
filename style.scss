@@ -7,6 +7,8 @@ html{
     font-family: 'Red Hat Display', sans-serif;
     font-size: 16px;
     min-height: 100vh;
+    color: $desaturatedBlue;
+    line-height: 1;
 
 }
 
@@ -21,10 +23,10 @@ body{
     background-repeat: no-repeat;
     background-size: contain;
     background-color: $paleBlue;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-content: center;
 }
 
 .card{
@@ -35,10 +37,130 @@ body{
     background-color: white;
     overflow: hidden;
     border-radius: 10px;
+    box-shadow: -1px 7px 35px $darkBlue;
+
+    @include breakpoint-down(small){
+        width: 330px;
+        
+    }
+
+    &__summary, &__item, &__button{
+        margin-left: 47px;
+        margin-right: 47px;
+        @include breakpoint-down(small){
+            margin-left: 27px;
+            margin-right: 27px;
+        }
+    }    
 
     &__header{
         background-image: url(/illustration-hero.svg);
         width: 100%;
         height: 220px;
+        margin-bottom: 55px;
+        @include breakpoint-down(small){
+            height: 160px;
+            margin-bottom: 38px;
+        }
+    }
+    &__summary{
+        text-align: center;
+        h1{
+            font-size: 26px;
+            color: $darkBlue;
+            font-weight: 900;
+            margin-bottom: 24px;
+            @include breakpoint-down(small){
+                font-size: 21px;
+            }
+        }
+        p{
+            line-height: 1.4;
+            margin-bottom: 22px;
+            @include breakpoint-down(small){
+                margin-bottom: 28px;
+            }
+        }
+
+    }
+    &__item{
+        background-color: $veryPaleBlue;
+        border-radius: 10px;
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        @include breakpoint-down(small){
+            margin-bottom: 24px;
+            padding: 16px;
+        }
+        &__image{
+            background-image: url(/icon-music.svg);
+            width: 48px;
+            height: 48px;
+            margin-right: 20px;
+            @include breakpoint-down(small){
+                margin-right: 18px;
+            }
+        }
+        &__name{
+            color: $darkBlue;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        &__text{
+            margin-right: 90px;
+            @include breakpoint-down(small){
+                margin-right: 50px;
+                font-size: 12px;
+            }
+        }
+        &__change{
+            font-weight: 600;
+            color: $brightBlue;
+            @include breakpoint-down(small){
+                font-size: 12px;
+            }
+            &:hover{
+                a{
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    &__button{
+        text-align: center;
+        &__proceed{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            background-color: $brightBlue;
+            color: white;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: opacity 200ms ease-in-out;
+            margin-bottom: 33px;
+            box-shadow: -3px 5px 21px $brightBlue;
+            
+            &:hover{
+                opacity: 0.7;
+                cursor: pointer;
+            }
+
+        }
+        &__cancel{
+            font-weight: 600;
+            margin-bottom: 50px;
+            transition: all 200ms ease-in-out;
+            &:hover{
+                font-weight: 900;
+                color: $darkBlue;
+                cursor: pointer;
+            }
+            @include breakpoint-down(small){
+                margin-bottom: 37px;
+            }
+        }
     }
 }
